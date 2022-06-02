@@ -1601,14 +1601,17 @@ begin
             //                        conflicts.
             // #ToDo1 (MvR) 30-7-2008: temporary implementation; have to check
             //                         for proper functioning later.
-            collectionItem := FindInterface(ASchema, propertyItem.TranslatedName + CollectionPostfix, ifElement);
+            if propertyItem is TXMLDataBindingItemProperty then
+            begin
+              collectionName := propertyItem.TranslatedName + '_' + TranslateItemName(TXMLDataBindingItemProperty(propertyItem).Item) + CollectionPostfix;
+            end else
+            begin
+              collectionName := propertyItem.TranslatedName + CollectionPostfix;
+            end;
+
+            collectionItem := FindInterface(ASchema, collectionName, ifElement);
             if not Assigned(collectionItem) then
             begin
-              case propertyItem.PropertyType of
-                ptSimple: collectionName  := propertyItem.TranslatedName + CollectionPostfix;
-                ptItem:   collectionName  := propertyItem.TranslatedName + CollectionPostfix;
-              end;
-
               collectionItem                := TXMLDataBindingInterface.Create(Self, propertyItem.SchemaItem, collectionName);
               collectionItem.CollectionItem := propertyItem;
               ASchema.InsertItem(collectionItem, interfaceItem);
