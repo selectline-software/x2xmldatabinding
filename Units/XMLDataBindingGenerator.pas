@@ -1062,7 +1062,7 @@ begin
     if Assigned(schemaDef) and (not VarIsNull(schemaDef.TargetNamespace)) then
     begin
       namespace := schemaDef.TargetNamespace;
-      if namespace <> Schemas[0].TargetNamespace then
+      //if namespace <> Schemas[0].TargetNamespace then
         propertyItem.TargetNamespace := namespace;
     end;
 
