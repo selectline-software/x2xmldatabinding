@@ -110,6 +110,8 @@ const
 
   XSDValidateMethodInterface              = '    procedure XSDValidate;' + CrLf +
                                             '    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult);';
+  XSDValidateMethodClassInterface         = '    procedure XSDValidate; override;' + CrLf +
+                                            '    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult); override;';
 
   XSDValidateMethodImplementationBegin          = 'procedure TXML%<Name>:s.XSDValidate;' + CrLf +
                                                   'begin';
@@ -120,14 +122,16 @@ const
   XSDValidateMethodImplementationSort           = '  SortChildNodes(Self, [%<SortOrder>:s]);';
   XSDValidateMethodImplementationArrayBreak     = #13#10 + '    ';
 
+  XSDValidateMethodImplementationInherited      = '  inherited XSDValidate;';
   XSDValidateMethodImplementationEnd            = 'end;' + CrLf;
 
 
-  XSDValidateStrictMethodImplementationBegin    = 'procedure TXML%<Name>:s.XSDValidateStrict(AResult: IXSDValidateStrictResult);' + CrLf +
-                                                  'begin';
-  XSDValidateStrictMethodImplementationRequired = '  ValidateRequiredElements(AResult, Self, [%<RequiredElements>:s]);';
-  XSDValidateStrictMethodImplementationAttrib   = '  ValidateRequiredAttributes(AResult, Self, [%<RequiredAttributes>:s]);';
-  XSDValidateStrictMethodImplementationEnd      = 'end;' + CrLf;
+  XSDValidateStrictMethodImplementationBegin     = 'procedure TXML%<Name>:s.XSDValidateStrict(AResult: IXSDValidateStrictResult);' + CrLf +
+                                                   'begin';
+  XSDValidateStrictMethodImplementationRequired  = '  ValidateRequiredElements(AResult, Self, [%<RequiredElements>:s]);';
+  XSDValidateStrictMethodImplementationAttrib    = '  ValidateRequiredAttributes(AResult, Self, [%<RequiredAttributes>:s]);';
+  XSDValidateStrictMethodImplementationInherited = '  inherited XSDValidateStrict(AResult);';
+  XSDValidateStrictMethodImplementationEnd       = 'end;' + CrLf;
 
 
   EnumeratorMethodInterface       = '    function GetEnumerator: IXML%<Name>:sEnumerator;';

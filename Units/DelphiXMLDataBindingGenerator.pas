@@ -1537,10 +1537,14 @@ begin
   if AItem.CanValidate then
   begin
     case ASection of
-      dxsInterface,
-      dxsClass:
+      dxsInterface:
         begin
           AWriter.WriteLine(XSDValidateMethodInterface);
+          AWriter.WriteLine('');
+        end;
+      dxsClass:
+        begin
+          AWriter.WriteLine(XSDValidateMethodClassInterface);
           AWriter.WriteLine('');
         end;
 
@@ -1648,6 +1652,7 @@ begin
                               ['SortOrder', elementSortOrder]);
   end;
 
+  AWriter.WriteLine(IfThen(AStrict, XSDValidateStrictMethodImplementationInherited, XSDValidateMethodImplementationInherited));
   AWriter.WriteLine(IfThen(AStrict, XSDValidateStrictMethodImplementationEnd, XSDValidateMethodImplementationEnd));
 end;
 

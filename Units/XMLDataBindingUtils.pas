@@ -38,18 +38,22 @@ type
   end;
 
 
-  TX2XMLNode = class(TXMLNode)
+  TX2XMLNode = class(TXMLNode, IXSDValidate, IXSDValidateStrict)
   private
     function GetChildNodesNS(const ANodeName, ANamespaceURI: DOMString): IXMLNode;
   protected
+    procedure XSDValidate; virtual;
+    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult); virtual;
     property ChildNodesNS[const ANodeName, ANamespaceURI: DOMString]: IXMLNode read GetChildNodesNS;
   end;
 
 
-  TX2XMLNodeCollection = class(TXMLNodeCollection)
+  TX2XMLNodeCollection = class(TXMLNodeCollection, IXSDValidate, IXSDValidateStrict)
   private
     function GetChildNodesNS(const ANodeName, ANamespaceURI: DOMString): IXMLNode;
   protected
+    procedure XSDValidate; virtual;
+    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult); virtual;
     property ChildNodesNS[const ANodeName, ANamespaceURI: DOMString]: IXMLNode read GetChildNodesNS;
   end;
 
@@ -197,7 +201,13 @@ begin
     Result := AddChild(ANodeName, ANamespaceURI);  
 end;
 
+procedure TX2XMLNode.XSDValidate;
+begin
+end;
 
+procedure TX2XMLNode.XSDValidateStrict(AResult: IXSDValidateStrictResult);
+begin
+end;
 
 { TX2XMLNodeCollection }
 function TX2XMLNodeCollection.GetChildNodesNS(const ANodeName, ANamespaceURI: DOMString): IXMLNode;
@@ -207,7 +217,13 @@ begin
     Result := AddChild(ANodeName, ANamespaceURI);  
 end;
 
+procedure TX2XMLNodeCollection.XSDValidate;
+begin
+end;
 
+procedure TX2XMLNodeCollection.XSDValidateStrict(AResult: IXSDValidateStrictResult);
+begin
+end;
 
 { TXMLNodeCollectionEnumerator }
 constructor TXMLNodeCollectionEnumerator.Create(ANodeCollection: IXMLNodeCollection);
