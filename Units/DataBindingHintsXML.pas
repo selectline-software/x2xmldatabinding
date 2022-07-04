@@ -276,8 +276,8 @@ type
   public
     procedure AfterConstruction; override;
   protected
-    procedure XSDValidate;
-    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult);
+    procedure XSDValidate; override;
+    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult); override;
 
     function GetEnumerator: IXMLEnumerationEnumerator;
 
@@ -297,8 +297,8 @@ type
 
   TXMLMember = class(TX2XMLNode, IXSDValidate, IXSDValidateStrict, IXMLMember)
   protected
-    procedure XSDValidate;
-    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult);
+    procedure XSDValidate; override;
+    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult); override;
 
     function GetName: WideString;
     function GetValue: WideString;
@@ -326,8 +326,8 @@ type
 
   TXMLDocumentElement = class(TX2XMLNode, IXSDValidate, IXSDValidateStrict, IXMLDocumentElement)
   protected
-    procedure XSDValidate;
-    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult);
+    procedure XSDValidate; override;
+    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult); override;
 
     function GetSchema: WideString;
     function GetXPath: WideString;
@@ -355,8 +355,8 @@ type
 
   TXMLInterfaceName = class(TX2XMLNode, IXSDValidate, IXSDValidateStrict, IXMLInterfaceName)
   protected
-    procedure XSDValidate;
-    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult);
+    procedure XSDValidate; override;
+    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult); override;
 
     function GetSchema: WideString;
     function GetXPath: WideString;
@@ -386,8 +386,8 @@ type
 
   TXMLPropertyName = class(TX2XMLNode, IXSDValidate, IXSDValidateStrict, IXMLPropertyName)
   protected
-    procedure XSDValidate;
-    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult);
+    procedure XSDValidate; override;
+    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult); override;
 
     function GetSchema: WideString;
     function GetXPath: WideString;
