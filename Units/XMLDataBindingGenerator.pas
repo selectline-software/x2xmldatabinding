@@ -1817,7 +1817,7 @@ constructor TXMLDataBindingInterface.Create(AOwner: TXMLDataBindingGenerator; AS
 var
   elementDef:   IXMLElementDef;
   compositor:   IXMLElementCompositor;
-
+  complexTypeDef: IXMLComplexTypeDef;
 begin
   inherited Create(AOwner, ASchemaItem, AName);
 
@@ -1836,6 +1836,13 @@ begin
     if elementDef.ChildElements.Count > 0 then
     begin
       if Supports(elementDef.ChildElements[0].ParentNode, IXMLElementCompositor, compositor) then
+        FIsSequence := (compositor.CompositorType = ctSequence);
+    end;
+  end else if Supports(ASchemaItem, IXMLComplexTypeDef, complexTypeDef) then
+  begin
+    if complexTypeDef.ElementDefList.Count > 0 then
+    begin
+      if Supports(complexTypeDef.ElementDefList[0].ParentNode, IXMLElementCompositor, compositor) then
         FIsSequence := (compositor.CompositorType = ctSequence);
     end;
   end;
