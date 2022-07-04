@@ -116,21 +116,21 @@ const
   XSDValidateMethodImplementationBegin          = 'procedure TXML%<Name>:s.XSDValidate;' + CrLf +
                                                   'begin';
 
+  XSDValidateMethodImplementationInherited      = '  inherited XSDValidate;';
   XSDValidateMethodImplementationRequired       = '  CreateRequiredElements(Self, [%<RequiredElements>:s], [%<RequiredElementNamespaces>:s]);';
   XSDValidateMethodImplementationComplex        = '  Get%<Name>:s;';
   XSDValidateMethodImplementationAttrib         = '  CreateRequiredAttributes(Self, [%<RequiredAttributes>:s]);';
   XSDValidateMethodImplementationSort           = '  SortChildNodes(Self, [%<SortOrder>:s]);';
   XSDValidateMethodImplementationArrayBreak     = #13#10 + '    ';
 
-  XSDValidateMethodImplementationInherited      = '  inherited XSDValidate;';
   XSDValidateMethodImplementationEnd            = 'end;' + CrLf;
 
 
   XSDValidateStrictMethodImplementationBegin     = 'procedure TXML%<Name>:s.XSDValidateStrict(AResult: IXSDValidateStrictResult);' + CrLf +
                                                    'begin';
+  XSDValidateStrictMethodImplementationInherited = '  inherited XSDValidateStrict(AResult);';
   XSDValidateStrictMethodImplementationRequired  = '  ValidateRequiredElements(AResult, Self, [%<RequiredElements>:s]);';
   XSDValidateStrictMethodImplementationAttrib    = '  ValidateRequiredAttributes(AResult, Self, [%<RequiredAttributes>:s]);';
-  XSDValidateStrictMethodImplementationInherited = '  inherited XSDValidateStrict(AResult);';
   XSDValidateStrictMethodImplementationEnd       = 'end;' + CrLf;
 
 

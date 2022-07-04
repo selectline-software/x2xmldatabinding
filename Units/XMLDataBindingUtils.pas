@@ -613,13 +613,7 @@ begin
   nodeInfo1 := Item1;
   nodeInfo2 := Item2;
 
-  if (nodeInfo1^.SortIndex > -1) and (nodeInfo2^.SortIndex = -1) then
-    Result := GreaterThanValue
-
-  else if (nodeInfo1^.SortIndex = -1) and (nodeInfo2^.SortIndex > -1) then
-    Result := LessThanValue
-
-  else if (nodeInfo1^.SortIndex = nodeInfo2^.SortIndex) then
+  if (nodeInfo1^.SortIndex = nodeInfo2^.SortIndex) then
     Result := CompareValue(nodeInfo1^.OriginalIndex, nodeInfo2^.OriginalIndex)
 
   else
@@ -768,6 +762,7 @@ begin
       New(nodeInfo);
       nodeInfo^.Node := AParent.ChildNodes[childIndex];
       nodeInfo^.OriginalIndex := childIndex;
+      nodeInfo^.SortIndex := -1;
 
       for sortIndex := Low(ASortOrder) to High(ASortOrder) do
       begin

@@ -118,8 +118,8 @@ type
   public
     procedure AfterConstruction; override;
   protected
-    procedure XSDValidate;
-    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult);
+    procedure XSDValidate; override;
+    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult); override;
 
     function GetOutputTypeText: WideString;
     function GetOutputType: TXMLDataBindingOutputType;
@@ -140,8 +140,8 @@ type
 
   TXMLOutputSingle = class(TX2XMLNode, IXSDValidate, IXSDValidateStrict, IXMLOutputSingle)
   protected
-    procedure XSDValidate;
-    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult);
+    procedure XSDValidate; override;
+    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult); override;
 
     function GetFileName: WideString;
 
@@ -150,8 +150,8 @@ type
 
   TXMLOutputMultiple = class(TX2XMLNode, IXSDValidate, IXSDValidateStrict, IXMLOutputMultiple)
   protected
-    procedure XSDValidate;
-    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult);
+    procedure XSDValidate; override;
+    procedure XSDValidateStrict(AResult: IXSDValidateStrictResult); override;
 
     function GetPath: WideString;
     function GetPrefix: WideString;

@@ -1588,6 +1588,7 @@ var
 begin
   AWriter.WriteLineNamedFmt(IfThen(AStrict, XSDValidateStrictMethodImplementationBegin, XSDValidateMethodImplementationBegin),
                             ['Name', AItem.TranslatedName]);
+  AWriter.WriteLine(IfThen(AStrict, XSDValidateStrictMethodImplementationInherited, XSDValidateMethodImplementationInherited));
 
   elementSortCount := 0;
   elementSortOrder := '';
@@ -1652,7 +1653,6 @@ begin
                               ['SortOrder', elementSortOrder]);
   end;
 
-  AWriter.WriteLine(IfThen(AStrict, XSDValidateStrictMethodImplementationInherited, XSDValidateMethodImplementationInherited));
   AWriter.WriteLine(IfThen(AStrict, XSDValidateStrictMethodImplementationEnd, XSDValidateMethodImplementationEnd));
 end;
 
