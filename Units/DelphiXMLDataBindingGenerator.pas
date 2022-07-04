@@ -1645,7 +1645,7 @@ begin
                               ['RequiredAttributes', attributeRequired]);
   end;
 
-  if elementSortCount > 1 then
+  if (elementSortCount > 1) or ((elementSortCount = 1) and (AItem.BaseItem <> nil)) then
   begin
     Delete(elementSortOrder, 1, 2);
     AWriter.WriteLineNamedFmt(XSDValidateMethodImplementationSort,
