@@ -1945,7 +1945,7 @@ begin
 
   { If our children are a sequence and there's at least two elements,
     we can validate their order. }
-  else if IsSequence and (elementCount > 1) then
+  else if IsSequence and ((elementCount > 1) or Assigned(FBaseItem)) then
     Result := True;
 end;
 
